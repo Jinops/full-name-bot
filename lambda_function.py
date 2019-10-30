@@ -1,6 +1,7 @@
 import os
 import json
 import requests
+from private import *
 
 def lambda_handler(event, context):
 	# TODO implement
@@ -11,16 +12,9 @@ def lambda_handler(event, context):
 			"color" : "#3d0040",
 		}]
 	}
-
-	incoming_webhook_url = get_json()
 	post_message(incoming_webhook_url, payloads)
 
-def get_json():
-	with open("private.json") as json_file:
-		# Sample of private.json 
-		# {"url" : "https://www.google.co.kr"}
-		json_data = json.load(json_file)
-		return json_data["url"]
+
 
 def post_message(url, payloads):
 
@@ -29,7 +23,6 @@ def post_message(url, payloads):
 		print("success")
 	else :
 		print("%s error" %response.status_code)
-
 
 
 #FOR TEST
