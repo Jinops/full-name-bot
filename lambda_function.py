@@ -2,6 +2,7 @@ import os
 import json
 import requests
 from private import *
+from gspread_sheet import get_searched_result
 
 def lambda_handler(event, context):
 	# TODO implement
@@ -25,5 +26,7 @@ def post_message(url, payloads):
 		print("%s error" %response.status_code)
 
 
-#FOR TEST
-lambda_handler("TEST", "TEST")
+def test():
+	print(get_searched_result("JGQ"))
+
+test()
