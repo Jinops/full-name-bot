@@ -8,10 +8,10 @@ message = "Lorem Ipsum JGQ and WLD is blabla"
 
 def lambda_handler(event, context):
 	# TODO implement
-
+	text = '\n'.join(get_searched_result(message))
 	payloads = {
 		"attachments" : [{
-			"text" : "[JGQ] 1. Jungle Quests",
+			"text" : text,
 			"color" : "#3d0040",
 		}]
 	}
@@ -29,6 +29,6 @@ def post_message(url, payloads):
 
 
 def test():
-	print(*sorted(get_searched_result(message)), sep='\n')
+	lambda_handler(test, test)
 
 test()

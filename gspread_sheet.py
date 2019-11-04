@@ -37,7 +37,7 @@ def get_result_by_title(titles):
 		cell = worksheet.find(game_title_head + title)
 		gameID = worksheet.cell(cell.row,cell.col-3).value
 		gameName = worksheet.cell(cell.row,cell.col-1).value
-		result.append("%s. %s" %(gameID, gameName))
+		result.append("[%s] %s. %s" %(title, gameID, gameName))
 	return result
 
 def get_all_title():
