@@ -4,6 +4,8 @@ import requests
 from private import *
 from gspread_sheet import get_searched_result
 
+message = "Lorem Ipsum JGQ and WLD is blabla"
+
 def lambda_handler(event, context):
 	# TODO implement
 
@@ -27,6 +29,6 @@ def post_message(url, payloads):
 
 
 def test():
-	print(get_searched_result("JGQ"))
+	print(*sorted(get_searched_result(message)), sep='\n')
 
 test()
