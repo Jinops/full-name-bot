@@ -10,12 +10,10 @@ update_cycle = 30 # Days
 
 def search():
 	global sheet
-	#is_time_passed(datetime.now(), datetime.timedelta(days=30))
-	#if (datetime.today() )
 	load_json()
-	#print(is_time_passed(live_time, update_cycle))
-	#	save_sheet()
+	get_all_title()
 
+###########################
 def load_json():
 	global sheet
 	if not os.path.exists("sheet.json"):
@@ -29,10 +27,6 @@ def load_json():
 			save_sheet(live_time.strftime("%Y-%m-%d"))
 			print("sheet is updated")
 
-
-	
-
-
 def is_update_cylce(live_time, period):
 	global sheet
 	last_updated_time = datetime.strptime(sheet[0], "%Y-%m-%d")
@@ -41,6 +35,14 @@ def is_update_cylce(live_time, period):
 		return True
 	else :
 		return False
+###########################
 
+
+def get_all_title():
+	global sheet
+	all_title = []
+	for title in sheet :
+		all_title.append(title[4])
+	print(all_title)
 
 search()
