@@ -41,9 +41,9 @@ def get_all_title():
 	return worksheet.col_values(5)
 
 def save_sheet(updated_time):
-	sheet_dic = []
-	sheet_dic = worksheet.get_all_values()
-	sheet_dic.insert(0, updated_time)
+	sheet_list = []
+	sheet_list = worksheet.get_all_values()
+	sheet_list.insert(0, updated_time)
 	with open("sheet.json", 'w', encoding='utf-8') as make_file:
-		json.dump(sheet_dic, make_file, indent="\t")
+		json.dump(sheet_list, make_file, indent="\t")
 
