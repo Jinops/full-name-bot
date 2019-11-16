@@ -121,9 +121,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-# Others
 private.json
 Full name Bot-0207e416d2b3.json
 private.py
-.DS_Store
