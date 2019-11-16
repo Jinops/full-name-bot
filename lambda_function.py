@@ -1,7 +1,7 @@
 import os
 import json
 import requests
-from private import *
+from private import incoming_webhook_url
 from gspread_sheet import get_searched_result
 
 message = "Lorem Ipsum JGQ and WLD is blabla"
@@ -27,8 +27,8 @@ def post_message(url, payloads):
 	else :
 		print("%s error" %response.status_code)
 
-
 def test():
 	lambda_handler(test, test)
+	update_checker()
 
 test()

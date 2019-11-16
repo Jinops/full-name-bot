@@ -1,4 +1,5 @@
 import gspread
+import json
 from private import permission_json_file, sheet_url, sheet_name
 
 #authorize
@@ -10,16 +11,12 @@ gc = gspread.authorize(credentials)
 doc = gc.open_by_url(sheet_url)
 worksheet = doc.worksheet(sheet_name)
 
-
 game_title_head = "SS/" #It can be changed
 
 def get_searched_result(message):
 	return get_result_by_title(get_included_title(message))
-	#parse data
 
-	return find_title
-
-def get_included_title(message):
+def get_included_title(message): # Get title from sheet
 	find_title = []
 	game_list = get_all_title()
 	del game_list[0]
@@ -31,7 +28,7 @@ def get_included_title(message):
 			i += 1
 	return find_title
 
-def get_result_by_title(titles):
+def get_result_by_title(titles): # Get Result from title
 	result = []
 	for title in titles:
 		cell = worksheet.find(game_title_head + title)
@@ -42,4 +39,11 @@ def get_result_by_title(titles):
 
 def get_all_title():
 	return worksheet.col_values(5)
+
+def save_sheet(updated_time):
+	sheet_dic = []
+	sheet_dic = worksheet.get_all_values()
+	sheet_dic.insert(0, updated_time)
+	with open("sheet.json", 'w', encoding='utf-8') as make_file:
+		json.dump(sheet_dic, make_file, indent="\t")
 
